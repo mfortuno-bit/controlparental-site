@@ -331,19 +331,31 @@
     var state = { nombre: "", edad: null, areas: [], minColegio: null, minFinde: null, apagado: null };
     var inicioTrackeado = false;
 
-    /* Sugerencias por edad: minutos colegio / minutos finde / hora de apagado */
+    /* Sugerencias por edad: minutos colegio / minutos finde / hora de apagado.
+       Conservadoras a propósito (pantalla recreativa): es más sano partir corto y
+       soltar después que partir largo y recortar. El apagado deja al menos una hora
+       sin pantallas antes de dormir. */
     var presets = {
-      "5-7":   { colegio: 30,  finde: 60,  apagado: "19:30" },
-      "8-10":  { colegio: 60,  finde: 90,  apagado: "20:30" },
-      "11-13": { colegio: 90,  finde: 120, apagado: "21:30" },
-      "14+":   { colegio: 120, finde: 180, apagado: "22:30" }
+      "5-7":   { colegio: 20, finde: 45,  apagado: "19:00" },
+      "8-10":  { colegio: 45, finde: 60,  apagado: "20:00" },
+      "11-13": { colegio: 60, finde: 90,  apagado: "21:00" },
+      "14+":   { colegio: 90, finde: 120, apagado: "21:30" }
+    };
+
+    /* Dónde se usan las pantallas: la pieza queda fuera, con más fuerza mientras
+       más chico. El tono explica el porqué, sin culpa. */
+    var lugarPantallas = {
+      "5-7":   "Uso las pantallas en las partes comunes de la casa (living o comedor), con un grande cerca. En la pieza no se usan pantallas.",
+      "8-10":  "Uso las pantallas en las partes comunes de la casa, no en la pieza. Así es más fácil compartir lo que veo y pedir ayuda al tiro si algo pasa.",
+      "11-13": "Las pantallas se usan en los espacios comunes de la casa. El celular no entra a la pieza, sobre todo de noche: dormir bien es la base de todo lo demás.",
+      "14+":   null
     };
 
     /* ===== Banco de cláusulas: edad × área ===== */
     var clausulas = {
       juegos: {
         "5-7": [
-          "Juego en las partes comunes de la casa, con un grande cerca, no encerrado en la pieza.",
+          "Juego con un papá cerca, que puede mirar mi partida cuando quiera (y jugar conmigo, mejor todavía).",
           "Cuando se acaba mi tiempo, pauso o apago sin pelear. Un papá me avisa 5 minutos antes para que no me pille de sorpresa."
         ],
         "8-10": [
@@ -565,8 +577,11 @@
       html += "<h3>⏰ Mi tiempo de pantalla</h3><ul class=\"terms\">";
       html += "<li>Los días de colegio puedo usar pantallas hasta <strong>" + esc(String(state.minColegio)) + " minutos</strong>.</li>";
       html += "<li>Los fines de semana y vacaciones, hasta <strong>" + esc(String(state.minFinde)) + " minutos</strong> al día.</li>";
+      if (lugarPantallas[state.edad]) {
+        html += "<li>" + lugarPantallas[state.edad] + "</li>";
+      }
       if (state.areas.indexOf("dormir") < 0) {
-        html += "<li>Las pantallas se apagan a las <strong>" + esc(state.apagado) + "</strong>.</li>";
+        html += "<li>Las pantallas se apagan a las <strong>" + esc(state.apagado) + "</strong> y quedan a dormir fuera de mi pieza.</li>";
       }
       html += "</ul>";
 
