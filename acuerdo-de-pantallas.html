@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Acuerdo de Pantallas — gratis y personalizado | ControlParental.cl</title>
+  <meta name="description" content="Crea en 2 minutos un acuerdo de pantallas personalizado para tu familia: tiempo de pantalla, videojuegos, YouTube y redes según la edad de tu hijo. Gratis, imprimible y hecho para conversarlo juntos.">
+  <link rel="canonical" href="https://controlparental.cl/acuerdo-de-pantallas.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:title" content="Generador de Acuerdo de Pantallas, gratis y personalizado">
+  <meta property="og:description" content="Responde 3 pasos y genera un acuerdo de pantallas imprimible, adaptado a la edad de tu hijo. Para acordar las reglas en familia, no imponerlas.">
+  <meta property="og:url" content="https://controlparental.cl/acuerdo-de-pantallas.html">
+  <meta property="og:image" content="https://controlparental.cl/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Generador de Acuerdo de Pantallas",
+      "url": "https://controlparental.cl/acuerdo-de-pantallas.html",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "es-CL",
+      "description": "Herramienta gratuita que genera un acuerdo familiar de pantallas personalizado e imprimible según la edad del niño y los conflictos típicos de cada casa.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CLP" },
+      "publisher": { "@type": "Organization", "name": "ControlParental.cl", "url": "https://controlparental.cl" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://controlparental.cl/" },
+        { "@type": "ListItem", "position": 2, "name": "Generador de Acuerdo de Pantallas" }
+      ]
+    }
+  ]
+}
+  </script>
+  <script defer src="analytics.js"></script>
+  <style>
+    /* ===== Wizard (solo pantalla) ===== */
+    .gen-shell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 28px;
+      margin: 26px 0;
+    }
+    .gen-progress {
+      display: flex; gap: 6px; margin-bottom: 22px;
+    }
+    .gen-progress span {
+      flex: 1; height: 5px; border-radius: 3px; background: var(--mint-line);
+    }
+    .gen-progress span.on { background: var(--brand); }
+    .gen-step h2 { margin-top: 0; }
+    .gen-step .hint { color: var(--muted); font-size: 0.92rem; margin-top: -6px; }
+    .gen-field { margin: 18px 0; }
+    .gen-field label { display: block; font-weight: 700; margin-bottom: 8px; }
+    .gen-field input[type="text"], .gen-field input[type="number"], .gen-field input[type="time"] {
+      font: inherit; padding: 10px 12px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); background: var(--bg); color: var(--ink);
+      width: 100%; max-width: 320px;
+    }
+    .gen-field input:focus { outline: 2px solid var(--brand); border-color: var(--brand); }
+    .gen-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .gen-pill {
+      border: 1.5px solid var(--border); background: var(--bg); color: var(--ink);
+      border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 600;
+      cursor: pointer; transition: all .12s ease;
+    }
+    .gen-pill:hover { border-color: var(--brand); }
+    .gen-pill.on {
+      background: var(--brand); border-color: var(--brand); color: #fff;
+    }
+    .gen-nav { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+    .gen-nav .btn.back {
+      background: transparent; color: var(--muted) !important;
+      border: 1.5px solid var(--border); box-shadow: none;
+    }
+    .gen-nav .btn.back:hover { color: var(--ink) !important; border-color: var(--muted); transform: none; }
+    .gen-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .gen-nums .gen-field { margin: 0; }
+    .gen-error { color: var(--accent-deep); font-weight: 600; font-size: 0.9rem; display: none; margin-top: 10px; }
+
+    /* ===== Documento generado (pantalla) ===== */
+    #documento {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow-md); padding: 34px 38px; margin: 22px 0;
+      font-family: Georgia, "Times New Roman", serif; font-size: 14px; line-height: 1.55;
+      color: #2d3436;
+    }
+    #documento .doc-header { text-align: center; border-bottom: 3px double var(--brand-deep); padding-bottom: 12px; margin-bottom: 18px; }
+    #documento .doc-header h2 { font-size: 24px; margin: 0; color: var(--brand-deep); border: none; text-transform: none; letter-spacing: 0.01em; font-family: var(--font-display); }
+    #documento .doc-header .tagline { font-style: italic; margin: 4px 0 0; font-size: 12.5px; }
+    #documento h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-deep); border-bottom: 1px solid #b8c4c2; padding-bottom: 3px; margin: 18px 0 8px; font-family: var(--font-body); }
+    #documento .blank { display: inline-block; min-width: 110px; border-bottom: 1.5px solid #2d3436; height: 1.05em; vertical-align: bottom; }
+    #documento .blank.wide { min-width: 210px; }
+    #documento .blank.small { min-width: 46px; }
+    #documento ul.terms { padding-left: 20px; margin: 6px 0; }
+    #documento ul.terms li { margin-bottom: 6px; }
+    #documento .two-col { display: flex; gap: 24px; }
+    #documento .two-col > div { flex: 1; }
+    #documento .box { background: #e6f7f5; border: 1px solid var(--brand-deep); border-radius: 8px; padding: 10px 14px; margin: 12px 0; }
+    #documento .signatures { display: flex; gap: 30px; margin-top: 26px; }
+    #documento .signatures > div { flex: 1; text-align: center; }
+    #documento .sig-line { border-bottom: 1.5px solid #2d3436; height: 32px; margin-bottom: 4px; }
+    #documento .sig-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; }
+    #documento .doc-footer { margin-top: 22px; padding-top: 8px; border-top: 1px solid #b8c4c2; font-size: 9.5px; color: #6b7280; text-align: center; }
+
+    /* ===== CTA al kit ===== */
+    .gen-kit-cta {
+      background: var(--brand-ink); color: #dcebe6; border-radius: var(--radius);
+      padding: 26px 30px; margin: 26px 0;
+    }
+    .gen-kit-cta h3 { color: #fff; margin-top: 0; font-size: 1.25rem; }
+    .gen-kit-cta ul { margin: 12px 0 18px; padding-left: 20px; }
+    .gen-kit-cta li { margin-bottom: 5px; font-size: 0.95rem; }
+    .gen-kit-cta .destacado { color: #f7bd62; font-weight: 700; }
+
+    @media (max-width: 640px) {
+      .gen-shell { padding: 20px 16px; }
+      #documento { padding: 22px 18px; }
+      #documento .two-col, #documento .signatures { flex-direction: column; gap: 14px; }
+    }
+
+    /* ===== Impresión: solo el documento ===== */
+    @media print {
+      header.site, footer.site, .page-hero, .no-print { display: none !important; }
+      main { max-width: none; padding: 0; margin: 0; }
+      body { background: #fff; }
+      #documento {
+        border: none; box-shadow: none; border-radius: 0;
+        padding: 0; margin: 0; font-size: 13px;
+      }
+      #documento .two-col { display: flex !important; flex-direction: row !important; }
+      #documento .signatures { display: flex !important; flex-direction: row !important; }
+    }
+    @page { size: auto; margin: 14mm; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="inner">
+      <a class="logo" href="index.html"><span class="logo-mark">🛡️</span>controlparental<span class="tld">.cl</span></a>
+      <nav>
+        <a href="index.html#guias">Guías</a>
+        <a href="metodo.html">El método</a>
+        <a href="mejores-apps-control-parental.html">Mejores apps</a>
+        <a class="nav-cta" href="kit.html">Kit familiar</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="inner">
+      <h1>Generador de Acuerdo de Pantallas</h1>
+      <p class="subtitle">
+        Responde 3 pasos y genera un acuerdo imprimible, adaptado a la edad de tu hijo
+        y a los conflictos reales de tu casa. Gratis, sin registro.
+      </p>
+    </div>
+  </div>
+
+  <main>
+    <nav class="crumbs no-print"><a href="index.html">Inicio</a><span>›</span><span>Acuerdo de pantallas</span></nav>
+
+    <div class="no-print">
+      <p>
+        Las reglas impuestas en silencio se pelean todas las noches; las reglas acordadas
+        abiertamente se cumplen (la mayoría de las veces). Esta herramienta arma el
+        borrador del acuerdo por ti: tú eliges la edad y los temas que generan conflicto
+        en tu casa, y te entregamos un documento listo para <strong>llenarlo conversando
+        en familia</strong>, firmarlo y pegarlo en el refrigerador.
+      </p>
+      <p>
+        Es el peldaño 3 de <a href="metodo.html">nuestro método</a>: acordar antes que
+        controlar. Ninguna app reemplaza esta conversación.
+      </p>
+    </div>
+
+    <div class="gen-shell no-print" id="wizard">
+      <div class="gen-progress" aria-hidden="true">
+        <span data-seg="1" class="on"></span><span data-seg="2"></span><span data-seg="3"></span><span data-seg="4"></span>
+      </div>
+
+      <!-- Paso 1 -->
+      <section class="gen-step" data-step="1">
+        <h2>¿Para quién es el acuerdo?</h2>
+        <p class="hint">El nombre es opcional: personaliza el documento, pero no lo guardamos en ninguna parte (todo pasa en tu navegador).</p>
+        <div class="gen-field">
+          <label for="gen-nombre">Nombre del niño o niña (opcional)</label>
+          <input type="text" id="gen-nombre" maxlength="30" placeholder="Ej: Sofía" autocomplete="off">
+        </div>
+        <div class="gen-field">
+          <label>¿Qué edad tiene?</label>
+          <div class="gen-pills" id="gen-edad" role="group" aria-label="Edad">
+            <button type="button" class="gen-pill" data-val="5-7">5 a 7 años</button>
+            <button type="button" class="gen-pill" data-val="8-10">8 a 10 años</button>
+            <button type="button" class="gen-pill" data-val="11-13">11 a 13 años</button>
+            <button type="button" class="gen-pill" data-val="14+">14 o más</button>
+          </div>
+        </div>
+        <p class="gen-error" id="err-edad">Elige la edad para poder adaptar el acuerdo.</p>
+        <div class="gen-nav">
+          <button type="button" class="btn" data-go="2">Siguiente →</button>
+        </div>
+      </section>
+
+      <!-- Paso 2 -->
+      <section class="gen-step" data-step="2" hidden>
+        <h2>¿Dónde están los conflictos en tu casa?</h2>
+        <p class="hint">Marca todos los que apliquen. El acuerdo incluirá una regla clara para cada uno.</p>
+        <div class="gen-field">
+          <div class="gen-pills" id="gen-areas" role="group" aria-label="Áreas de conflicto">
+            <button type="button" class="gen-pill" data-val="juegos">🎮 Videojuegos y consola</button>
+            <button type="button" class="gen-pill" data-val="youtube">📺 YouTube y videos</button>
+            <button type="button" class="gen-pill" data-val="redes">💬 Redes sociales</button>
+            <button type="button" class="gen-pill" data-val="tareas">📚 Tareas primero</button>
+            <button type="button" class="gen-pill" data-val="dormir">🌙 Hora de dormir</button>
+            <button type="button" class="gen-pill" data-val="comidas">🍽️ Comidas sin pantallas</button>
+            <button type="button" class="gen-pill" data-val="apps">📲 Descargas y apps nuevas</button>
+          </div>
+        </div>
+        <p class="gen-error" id="err-areas">Marca al menos un tema (es lo que hace útil al acuerdo).</p>
+        <div class="gen-nav">
+          <button type="button" class="btn back" data-go="1">← Atrás</button>
+          <button type="button" class="btn" data-go="3">Siguiente →</button>
+        </div>
+      </section>
+
+      <!-- Paso 3 -->
+      <section class="gen-step" data-step="3" hidden>
+        <h2>Los números</h2>
+        <p class="hint">Te sugerimos valores razonables para la edad que elegiste. Ajústalos a tu realidad: el mejor acuerdo es el que tu familia puede cumplir.</p>
+        <div class="gen-nums">
+          <div class="gen-field">
+            <label for="gen-min-colegio">Minutos al día (días de colegio)</label>
+            <input type="number" id="gen-min-colegio" min="0" max="480" step="15">
+          </div>
+          <div class="gen-field">
+            <label for="gen-min-finde">Minutos al día (fin de semana)</label>
+            <input type="number" id="gen-min-finde" min="0" max="600" step="15">
+          </div>
+          <div class="gen-field">
+            <label for="gen-apagado">Hora de apagar pantallas</label>
+            <input type="time" id="gen-apagado">
+          </div>
+        </div>
+        <div class="gen-nav">
+          <button type="button" class="btn back" data-go="2">← Atrás</button>
+          <button type="button" class="btn secondary" id="gen-generar">Generar mi acuerdo →</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Paso 4: resultado -->
+    <section id="resultado" hidden>
+      <div class="callout no-print">
+        <strong>Antes de imprimir:</strong> este es un borrador para conversar, no una ley.
+        Júntense un rato tranquilo (con once de por medio funciona mejor), lean cada punto,
+        llenen los espacios en blanco entre todos y firmen. Cuando llegue la discusión,
+        porque va a llegar, apuntas al papel, no al niño.
+      </div>
+
+      <article id="documento" aria-live="polite"></article>
+
+      <div class="gen-nav no-print">
+        <button type="button" class="btn" id="gen-imprimir">🖨️ Imprimir / guardar como PDF</button>
+        <button type="button" class="btn back" id="gen-reiniciar">Hacer otro acuerdo</button>
+      </div>
+
+      <div class="gen-kit-cta no-print" id="gen-kit-cta"></div>
+    </section>
+
+    <div class="callout no-print" style="margin-top:34px">
+      <strong>¿Y después de firmar?</strong> Las reglas necesitan respaldo técnico: revisa
+      las <a href="index.html#guias">guías paso a paso</a> para configurar cada dispositivo,
+      y <a href="control-parental-por-edades.html">qué corresponde a cada edad</a>.
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="inner">
+      <div class="brand-note">
+        <h4>🛡️ controlparental.cl</h4>
+        Guías honestas de seguridad digital para familias chilenas. Sin alarmismo,
+        sin tecnicismos: los pasos exactos y los porqués.
+      </div>
+      <div>
+        <h4>Guías populares</h4>
+        <a href="guias/control-parental-iphone.html">iPhone y iPad</a>
+        <a href="guias/control-parental-android.html">Android</a>
+        <a href="guias/control-parental-playstation.html">PlayStation</a>
+        <a href="guias/control-parental-roblox.html">Roblox</a>
+      </div>
+      <div>
+        <h4>Recursos</h4>
+        <a href="metodo.html">El método</a>
+        <a href="mejores-apps-control-parental.html">Mejores apps 2026</a>
+        <a href="kit.html">Kit familiar imprimible</a>
+        <a href="por-que-importa.html">Por qué importa</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
+        <a href="terminos.html">Términos y condiciones</a>
+        <a href="privacidad.html">Política de privacidad</a>
+      </div>
+      <div class="fineprint">
+        © 2026 ControlParental.cl. Algunos enlaces de este sitio son de afiliados: si compras
+        a través de ellos podemos recibir una comisión, sin costo extra para ti. Solo
+        recomendamos productos que investigamos y usaríamos con nuestras propias familias.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+
+    /* GA4: mismo patrón que gtag.js, los eventos quedan en cola aunque analytics.js
+       cargue después (dataLayer es global). */
+    function gtag() { (window.dataLayer = window.dataLayer || []).push(arguments); }
+
+    var state = { nombre: "", edad: null, areas: [], minColegio: null, minFinde: null, apagado: null };
+    var inicioTrackeado = false;
+
+    /* Sugerencias por edad: minutos colegio / minutos finde / hora de apagado */
+    var presets = {
+      "5-7":   { colegio: 30,  finde: 60,  apagado: "19:30" },
+      "8-10":  { colegio: 60,  finde: 90,  apagado: "20:30" },
+      "11-13": { colegio: 90,  finde: 120, apagado: "21:30" },
+      "14+":   { colegio: 120, finde: 180, apagado: "22:30" }
+    };
+
+    /* ===== Banco de cláusulas: edad × área ===== */
+    var clausulas = {
+      juegos: {
+        "5-7": [
+          "Juego en las partes comunes de la casa, con un grande cerca, no encerrado en la pieza.",
+          "Cuando se acaba mi tiempo, pauso o apago sin pelear. Un papá me avisa 5 minutos antes para que no me pille de sorpresa."
+        ],
+        "8-10": [
+          "Puedo jugar cuando ya terminé lo del paso de las tareas. En los juegos en línea juego solo con gente que conozco en persona.",
+          "Un papá me avisa 10 minutos antes de que se acabe el tiempo, y yo guardo la partida sin alargarla."
+        ],
+        "11-13": [
+          "En los juegos en línea uso el chat solo con amigos que conozco en persona. Si alguien me incomoda o me pide cosas raras, lo bloqueo y le cuento a un papá.",
+          "Guardo y salgo cuando se acaba mi tiempo. Si estoy en medio de una partida que no se puede pausar, aviso antes de empezarla."
+        ],
+        "14+": [
+          "Manejo mis horarios de juego dentro del tiempo total que acordamos. Si las notas o el sueño se resienten, renegociamos a la baja sin drama.",
+          "Las compras dentro de los juegos se conversan antes, siempre."
+        ]
+      },
+      youtube: {
+        "5-7": [
+          "Veo videos en YouTube Kids o con un grande al lado. Si aparece algo raro o que me da miedo, lo muestro altiro: nadie me va a retar por mostrar."
+        ],
+        "8-10": [
+          "Veo YouTube con el modo restringido activado y en las partes comunes de la casa. Los videos también cuentan dentro de mi tiempo de pantalla."
+        ],
+        "11-13": [
+          "Puedo ver YouTube dentro de mi tiempo. Cada cierto tiempo converso con mis papás sobre los canales que más veo, y ellos me muestran los suyos también."
+        ],
+        "14+": [
+          "Mi historial no se revisa a escondidas: si a mis papás algo les preocupa, me lo dicen de frente y lo conversamos como corresponde."
+        ]
+      },
+      redes: {
+        "5-7": [
+          "Todavía no tengo redes sociales propias. Si quiero ver algo (un baile, un video que me mostraron), lo veo junto a un papá."
+        ],
+        "8-10": [
+          "Todavía no tengo redes sociales propias, y volveremos a conversarlo cuando cumpla <span class=\"blank small\"></span> años. Mientras tanto, lo que quiera ver lo veo con un papá."
+        ],
+        "11-13": [
+          "Mis cuentas son privadas y mis papás conocen mis claves: no para espiarme, sino para poder ayudarme rápido si algo pasa.",
+          "No acepto solicitudes de gente que no conozco en persona, y si alguien me escribe cosas raras, pantallazo y aviso."
+        ],
+        "14+": [
+          "Mantengo mis cuentas privadas y reviso quién me sigue. Mis papás no comentan mis publicaciones ni revisan a escondidas.",
+          "Yo les cuento si algo se pone pesado (funas, mensajes de desconocidos, presión de grupo). Contar no es capitular: es tener refuerzos."
+        ]
+      },
+      tareas: {
+        "5-7": [
+          "Las pantallas parten después de mis responsabilidades: <span class=\"blank wide\"></span> (ordenar mis cosas, ayudar en la mesa, lo que acordemos)."
+        ],
+        "8-10": [
+          "Primero las tareas del colegio y mis responsabilidades de la casa, después las pantallas. Si un día no alcanzo, no se acumulan minutos para el día siguiente."
+        ],
+        "11-13": [
+          "Primero las tareas del colegio y mis responsabilidades, después las pantallas. Si necesito el computador para una tarea, eso no cuenta como tiempo de pantalla (y no aprovecho de abrir otras cosas)."
+        ],
+        "14+": [
+          "Yo organizo mis tiempos de estudio y de pantalla. El trato es por resultados: si las notas bajan o dejo de cumplir en la casa, volvemos al orden de tareas primero."
+        ]
+      },
+      dormir: {
+        "5-7": [
+          "Todas las pantallas se apagan a las {APAGADO} y los aparatos duermen en <span class=\"blank\"></span>, no en mi pieza."
+        ],
+        "8-10": [
+          "Todas las pantallas se apagan a las {APAGADO} y los aparatos duermen en <span class=\"blank\"></span>, no en mi pieza."
+        ],
+        "11-13": [
+          "Las pantallas se apagan a las {APAGADO}. El celular duerme fuera de mi pieza, en <span class=\"blank\"></span> (el despertador puede ser uno de verdad)."
+        ],
+        "14+": [
+          "Las pantallas se apagan a las {APAGADO} los días de colegio. El celular duerme fuera de la pieza: la mía y, si quieren sumarse, la de mis papás también."
+        ]
+      },
+      comidas: {
+        "5-7": [
+          "En las comidas no hay pantallas en la mesa. Los papás también cumplen esta regla, sin excepciones de \"es del trabajo\"."
+        ],
+        "8-10": [
+          "En las comidas no hay pantallas en la mesa. Los papás también cumplen esta regla, sin excepciones de \"es del trabajo\"."
+        ],
+        "11-13": [
+          "En las comidas no hay pantallas en la mesa, para todos. Si alguien espera una llamada importante de verdad, lo avisa antes de sentarse."
+        ],
+        "14+": [
+          "En las comidas no hay pantallas en la mesa, para todos, papás incluidos. Es la regla más corta y la que más cuesta: por eso la firmamos."
+        ]
+      },
+      apps: {
+        "5-7": [
+          "Las apps y juegos nuevos los descarga un papá. Yo puedo pedir, y me pueden decir que no."
+        ],
+        "8-10": [
+          "Descargo apps o juegos nuevos solo con permiso, y la clave de la tienda la ponen mis papás. Nada de compras dentro de los juegos sin preguntar."
+        ],
+        "11-13": [
+          "Pido permiso antes de descargar apps nuevas y no hago compras dentro de apps o juegos sin preguntar. Si una app me pide la edad, no miento para entrar."
+        ],
+        "14+": [
+          "Aviso qué apps nuevas empiezo a usar (no es permiso, es confianza en ambos sentidos). Cualquier compra con plata de la familia se pregunta antes."
+        ]
+      }
+    };
+
+    var promesasNino = {
+      base: [
+        "Parar cuando se acabe mi tiempo, sin pelear ni alargar.",
+        "Contar si veo algo raro o alguien me incomoda. Sé que nunca me van a retar por contar."
+      ],
+      "14+": [
+        "Cumplir lo que firmé sin que tengan que recordármelo cada día.",
+        "Contar si algo se pone pesado en internet, aunque me dé vergüenza. Sé que van a ayudar primero y retar después (o nunca)."
+      ]
+    };
+    var promesasPapas = [
+      "Cumplir también las reglas de la mesa y de escuchar cuando me hablan.",
+      "Mantener la calma si algo sale mal en internet, y ayudar primero.",
+      "Revisar este acuerdo cada <span class=\"blank small\"></span> meses, porque estás creciendo."
+    ];
+
+    /* ===== Navegación del wizard ===== */
+    function irA(paso) {
+      document.querySelectorAll(".gen-step").forEach(function (s) {
+        s.hidden = s.getAttribute("data-step") !== String(paso);
+      });
+      document.querySelectorAll(".gen-progress span").forEach(function (seg, i) {
+        seg.classList.toggle("on", i < paso);
+      });
+    }
+
+    function marcarProgreso4() {
+      document.querySelectorAll(".gen-progress span").forEach(function (seg) {
+        seg.classList.add("on");
+      });
+    }
+
+    /* Paso 1: edad (selección única) */
+    document.querySelectorAll("#gen-edad .gen-pill").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll("#gen-edad .gen-pill").forEach(function (b) { b.classList.remove("on"); });
+        btn.classList.add("on");
+        state.edad = btn.getAttribute("data-val");
+        document.getElementById("err-edad").style.display = "none";
+        if (!inicioTrackeado) { inicioTrackeado = true; gtag("event", "generador_inicio"); }
+      });
+    });
+
+    /* Paso 2: áreas (multi) */
+    document.querySelectorAll("#gen-areas .gen-pill").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        btn.classList.toggle("on");
+        var val = btn.getAttribute("data-val");
+        var i = state.areas.indexOf(val);
+        if (i >= 0) { state.areas.splice(i, 1); } else { state.areas.push(val); }
+        if (state.areas.length) { document.getElementById("err-areas").style.display = "none"; }
+      });
+    });
+
+    /* Botones siguiente/atrás */
+    document.querySelectorAll("[data-go]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var destino = parseInt(btn.getAttribute("data-go"), 10);
+        var origen = parseInt(btn.closest(".gen-step").getAttribute("data-step"), 10);
+        if (destino > origen) {
+          if (origen === 1 && !state.edad) { document.getElementById("err-edad").style.display = "block"; return; }
+          if (origen === 2 && !state.areas.length) { document.getElementById("err-areas").style.display = "block"; return; }
+          if (destino === 3) { precargarNumeros(); }
+        }
+        irA(destino);
+      });
+    });
+
+    function precargarNumeros() {
+      var p = presets[state.edad];
+      var c = document.getElementById("gen-min-colegio");
+      var f = document.getElementById("gen-min-finde");
+      var a = document.getElementById("gen-apagado");
+      if (!c.dataset.tocado) c.value = p.colegio;
+      if (!f.dataset.tocado) f.value = p.finde;
+      if (!a.dataset.tocado) a.value = p.apagado;
+    }
+    ["gen-min-colegio", "gen-min-finde", "gen-apagado"].forEach(function (id) {
+      document.getElementById(id).addEventListener("input", function (e) { e.target.dataset.tocado = "1"; });
+    });
+
+    /* ===== Generar el documento ===== */
+    document.getElementById("gen-generar").addEventListener("click", function () {
+      state.nombre = document.getElementById("gen-nombre").value.trim();
+      state.minColegio = document.getElementById("gen-min-colegio").value || presets[state.edad].colegio;
+      state.minFinde = document.getElementById("gen-min-finde").value || presets[state.edad].finde;
+      state.apagado = document.getElementById("gen-apagado").value || presets[state.edad].apagado;
+
+      document.getElementById("documento").innerHTML = renderDocumento();
+      document.getElementById("gen-kit-cta").innerHTML = renderKitCta();
+      document.getElementById("wizard").hidden = true;
+      marcarProgreso4();
+      document.getElementById("resultado").hidden = false;
+      document.getElementById("resultado").scrollIntoView({ behavior: "smooth", block: "start" });
+
+      gtag("event", "acuerdo_generado", { edad: state.edad, areas: state.areas.join(",") });
+    });
+
+    function esc(s) {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function renderDocumento() {
+      var nombre = state.nombre ? esc(state.nombre) : "";
+      var titulo = nombre ? "El Acuerdo de Pantallas de " + nombre : "Nuestro Acuerdo de Pantallas";
+      var quien = nombre ? nombre : '<span class="blank wide"></span>';
+      var esGrande = state.edad === "14+";
+
+      var html = "";
+      html += '<div class="doc-header"><h2>' + titulo + "</h2>";
+      html += '<p class="tagline">Lo conversamos y lo firmamos juntos: estas reglas son de toda la familia.</p></div>';
+
+      html += "<p>Este acuerdo es entre <strong>" + quien + "</strong> y sus papás, y parte el <span class=\"blank\"></span>.</p>";
+
+      /* Tiempo (siempre va) */
+      html += "<h3>⏰ Mi tiempo de pantalla</h3><ul class=\"terms\">";
+      html += "<li>Los días de colegio puedo usar pantallas hasta <strong>" + esc(String(state.minColegio)) + " minutos</strong>.</li>";
+      html += "<li>Los fines de semana y vacaciones, hasta <strong>" + esc(String(state.minFinde)) + " minutos</strong> al día.</li>";
+      if (state.areas.indexOf("dormir") < 0) {
+        html += "<li>Las pantallas se apagan a las <strong>" + esc(state.apagado) + "</strong>.</li>";
+      }
+      html += "</ul>";
+
+      /* Cláusulas por área elegida */
+      var titulos = {
+        juegos: "🎮 Videojuegos", youtube: "📺 YouTube y videos", redes: "💬 Redes sociales",
+        tareas: "📚 Primero lo primero", dormir: "🌙 La noche", comidas: "🍽️ La mesa", apps: "📲 Apps nuevas"
+      };
+      var orden = ["tareas", "juegos", "youtube", "redes", "dormir", "comidas", "apps"];
+      orden.forEach(function (area) {
+        if (state.areas.indexOf(area) < 0) return;
+        var items = clausulas[area][state.edad];
+        html += "<h3>" + titulos[area] + "</h3><ul class=\"terms\">";
+        items.forEach(function (c) {
+          html += "<li>" + c.replace("{APAGADO}", "<strong>" + esc(state.apagado) + "</strong>") + "</li>";
+        });
+        html += "</ul>";
+      });
+
+      /* Promesas mutuas */
+      var pNino = esGrande ? promesasNino["14+"] : promesasNino.base;
+      html += "<h3>🤝 Lo que nos prometemos</h3><div class=\"two-col\"><div><strong>" +
+        (nombre ? nombre + " promete:" : "Yo prometo:") + "</strong><ul class=\"terms\">";
+      pNino.forEach(function (p) { html += "<li>" + p + "</li>"; });
+      html += "</ul></div><div><strong>Los papás prometen:</strong><ul class=\"terms\">";
+      promesasPapas.forEach(function (p) { html += "<li>" + p + "</li>"; });
+      html += "</ul></div></div>";
+
+      /* Consecuencias */
+      html += "<div class=\"box\"><strong>Si no se cumple:</strong> la primera vez, un recordatorio. Después: " +
+        "<span class=\"blank wide\"></span>. Lo acordamos juntos, así que es justo.</div>";
+
+      /* Firmas */
+      html += "<div class=\"signatures\">" +
+        "<div><div class=\"sig-line\"></div><div class=\"sig-label\">Firma " + (nombre ? nombre : "niño/a") + "</div></div>" +
+        "<div><div class=\"sig-line\"></div><div class=\"sig-label\">Firma papá/mamá</div></div>" +
+        "<div><div class=\"sig-line\"></div><div class=\"sig-label\">Firma papá/mamá</div></div>" +
+        "</div>";
+
+      html += "<div class=\"doc-footer\">Generado gratis en controlparental.cl/acuerdo-de-pantallas.html · " +
+        "Imprime todas las copias que tu familia necesite.</div>";
+
+      return html;
+    }
+
+    function renderKitCta() {
+      var mayor = state.edad === "11-13" || state.edad === "14+";
+      var html = "<h3>Este es el acuerdo básico. La conversación completa viene en el Kit.</h3>";
+      html += "<p>El <strong>Kit de Seguridad Digital Familiar</strong> ($9.990, pago único) trae los 4 documentos que cubren todo el camino:</p><ul>";
+      if (mayor) {
+        html += "<li class=\"destacado\">📱 Acuerdo del Primer Celular: a esta edad es EL documento. Responsabilidades, costos, consecuencias y fecha de renegociación.</li>";
+      } else {
+        html += "<li>📱 Acuerdo del Primer Celular, para cuando llegue el gran día.</li>";
+      }
+      html += "<li>👨‍👩‍👧 Acuerdo Familiar de Medios: una página donde los papás también firman.</li>";
+      html += "<li>⏰ Contrato de Tiempo de Pantalla completo, con minutos extra por buen comportamiento.</li>";
+      html += "<li>✅ Checklists para dejar configurado cualquier equipo nuevo en 10 minutos.</li></ul>";
+      html += "<a class=\"btn secondary\" id=\"gen-cta-kit-btn\" href=\"kit.html\">Conocer el Kit completo →</a>";
+      return html;
+    }
+
+    /* Acciones del resultado */
+    document.getElementById("gen-imprimir").addEventListener("click", function () {
+      gtag("event", "acuerdo_impreso", { edad: state.edad });
+      window.print();
+    });
+    document.getElementById("gen-reiniciar").addEventListener("click", function () {
+      document.getElementById("resultado").hidden = true;
+      document.getElementById("wizard").hidden = false;
+      irA(1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    document.getElementById("gen-kit-cta").addEventListener("click", function (e) {
+      if (e.target && e.target.id === "gen-cta-kit-btn") {
+        gtag("event", "click_kit_desde_generador", { edad: state.edad });
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
