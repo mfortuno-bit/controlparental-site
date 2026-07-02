@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misión Pantallas — el desafío para demostrar que manejas tus pantallas | ControlParental.cl</title>
+  <meta name="description" content="8 situaciones reales para niños y niñas de 9 a 13: demuestra que sabes manejar tus pantallas, gana tu diploma y aprende a pedir más tiempo (bien pedido). Gratis y sin registro.">
+  <link rel="canonical" href="https://controlparental.cl/mision-pantallas.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:title" content="Misión Pantallas: ¿eres Aprendiz, Pro o Máster?">
+  <meta property="og:description" content="8 situaciones reales, un diploma y el secreto para pedir más tiempo de pantalla y que te digan que sí.">
+  <meta property="og:url" content="https://controlparental.cl/mision-pantallas.html">
+  <meta property="og:image" content="https://controlparental.cl/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Misión Pantallas",
+      "url": "https://controlparental.cl/mision-pantallas.html",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "es-CL",
+      "audience": { "@type": "PeopleAudience", "suggestedMinAge": 9, "suggestedMaxAge": 13 },
+      "description": "Módulo interactivo gratuito donde niños y niñas de 9 a 13 años practican decisiones reales sobre pantallas: juegos en línea, desconocidos, fotos que no se reenvían y cómo negociar más tiempo.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CLP" },
+      "publisher": { "@type": "Organization", "name": "ControlParental.cl", "url": "https://controlparental.cl" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://controlparental.cl/" },
+        { "@type": "ListItem", "position": 2, "name": "Misión Pantallas" }
+      ]
+    }
+  ]
+}
+  </script>
+  <script defer src="analytics.js"></script>
+  <style>
+    /* ===== Misión (solo pantalla) ===== */
+    .mp-shell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 28px;
+      margin: 26px 0;
+    }
+    .mp-progress { display: flex; gap: 5px; margin-bottom: 20px; }
+    .mp-progress span { flex: 1; height: 6px; border-radius: 3px; background: var(--mint-line); }
+    .mp-progress span.on { background: var(--brand); }
+    .mp-progress span.now { background: var(--accent); }
+    .mp-num { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent-deep); }
+    .mp-shell h2 { margin: 6px 0 10px; }
+    .mp-situacion { font-size: 1.02rem; margin-bottom: 18px; }
+    .mp-opciones { display: grid; gap: 10px; }
+    .mp-opcion {
+      text-align: left; font: inherit; cursor: pointer;
+      border: 1.5px solid var(--border); background: var(--bg); color: var(--ink);
+      border-radius: var(--radius-sm); padding: 13px 16px; line-height: 1.5;
+      transition: border-color .12s ease;
+    }
+    .mp-opcion:hover { border-color: var(--brand); }
+    .mp-opcion:disabled { cursor: default; opacity: 0.55; }
+    .mp-opcion.elegida-2 { border-color: var(--brand); background: var(--mint); opacity: 1; }
+    .mp-opcion.elegida-1 { border-color: var(--accent); background: var(--accent-soft); opacity: 1; }
+    .mp-opcion.elegida-0 { border-color: var(--accent-deep); background: var(--accent-soft); opacity: 1; }
+    .mp-feedback {
+      display: none; margin-top: 16px; padding: 14px 16px;
+      border-radius: var(--radius-sm); font-size: 0.95rem; line-height: 1.55;
+    }
+    .mp-feedback.v2 { display: block; background: var(--mint); border: 1px solid var(--mint-line); }
+    .mp-feedback.v1, .mp-feedback.v0 { display: block; background: var(--accent-soft); border: 1px solid var(--accent); }
+    .mp-siguiente { margin-top: 16px; display: none; }
+    .mp-siguiente.on { display: inline-flex; }
+
+    /* Resultado */
+    .mp-resultado { text-align: center; }
+    .mp-nivel { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.3rem); color: var(--brand-deep); margin: 8px 0 4px; }
+    .mp-puntaje { color: var(--muted); font-weight: 700; margin-bottom: 14px; }
+    .mp-nombre-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 18px 0; }
+    .mp-nombre-row input {
+      font: inherit; padding: 10px 12px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); background: var(--bg); color: var(--ink); max-width: 240px;
+    }
+    .mp-nombre-row input:focus { outline: 2px solid var(--brand); border-color: var(--brand); }
+
+    /* Diploma */
+    #diploma {
+      background: #fff; border: 3px double var(--brand-deep); border-radius: var(--radius);
+      box-shadow: var(--shadow-md); padding: 36px 30px; margin: 22px auto; max-width: 640px;
+      font-family: Georgia, "Times New Roman", serif; color: #2d3436; text-align: center;
+    }
+    #diploma .d-titulo { font-family: var(--font-display); font-size: 26px; color: var(--brand-deep); margin: 0 0 2px; }
+    #diploma .d-sub { font-style: italic; font-size: 13px; margin: 0 0 18px; }
+    #diploma .d-nombre { font-size: 24px; border-bottom: 1.5px solid #2d3436; display: inline-block; min-width: 260px; padding: 0 14px 2px; margin: 8px 0; }
+    #diploma .d-nivel { font-size: 18px; font-weight: 700; color: var(--accent-deep); margin: 10px 0; }
+    #diploma .d-detalle { font-size: 13px; line-height: 1.6; max-width: 460px; margin: 0 auto 16px; }
+    #diploma .d-fecha { font-size: 12px; margin-top: 14px; }
+    #diploma .d-footer { margin-top: 18px; padding-top: 10px; border-top: 1px solid #b8c4c2; font-size: 9.5px; color: #6b7280; }
+
+    /* Arte de pedir */
+    .mp-reglas { counter-reset: regla; list-style: none; padding: 0; margin: 22px 0; display: grid; gap: 12px; }
+    .mp-reglas li {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 14px 16px 14px 54px; position: relative; line-height: 1.55;
+    }
+    .mp-reglas li::before {
+      counter-increment: regla; content: counter(regla);
+      position: absolute; left: 14px; top: 13px;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--brand); color: #fff; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .mp-shell { padding: 20px 16px; }
+      #diploma { padding: 26px 16px; }
+    }
+
+    /* ===== Impresión: solo el diploma ===== */
+    @media print {
+      header.site, footer.site, .page-hero, .no-print { display: none !important; }
+      main { max-width: none; padding: 0; margin: 0; }
+      body { background: #fff; }
+      #diploma { border-radius: 0; box-shadow: none; margin: 0 auto; }
+    }
+    @page { size: auto; margin: 14mm; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="inner">
+      <a class="logo" href="index.html"><span class="logo-mark">🛡️</span>controlparental<span class="tld">.cl</span></a>
+      <nav>
+        <a href="index.html#guias">Guías</a>
+        <a href="metodo.html">El método</a>
+        <a href="mejores-apps-control-parental.html">Mejores apps</a>
+        <a class="nav-cta" href="kit.html">Kit familiar</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="inner">
+      <h1>Misión Pantallas 🚀</h1>
+      <p class="subtitle">
+        8 situaciones reales. Demuestra que sabes manejar tus pantallas, gana tu diploma
+        y llévate el secreto para pedir más tiempo (y que te digan que sí).
+      </p>
+    </div>
+  </div>
+
+  <main>
+    <nav class="crumbs no-print"><a href="index.html">Inicio</a><span>›</span><span>Misión Pantallas</span></nav>
+
+    <div class="no-print">
+      <p>
+        Esta página es <strong>para ti</strong>, no para tus papás. Nadie te va a dar un
+        sermón: son 8 situaciones que pasan de verdad (la partida que no se puede pausar,
+        el desconocido buena onda, la foto que llega al grupo) y tú decides qué harías.
+        Al final ganas un nivel, un diploma para imprimir, y algo mejor: argumentos de
+        verdad para negociar tu tiempo de pantalla.
+      </p>
+      <div class="callout">
+        <strong>¿Eres papá o mamá?</strong> Pásale el celular o mándale el link a tu hijo
+        y déjalo contestar solo (en serio, solo: así funciona). Lo que aprende acá calza
+        con el <a href="acuerdo-de-pantallas.html">acuerdo de pantallas</a> que pueden
+        firmar juntos después.
+      </div>
+    </div>
+
+    <div class="mp-shell no-print" id="mision">
+      <div class="mp-progress" id="mp-progress" aria-hidden="true"></div>
+      <div id="mp-escenario"></div>
+    </div>
+
+    <!-- Resultado -->
+    <section id="mp-final" hidden>
+      <div class="mp-shell mp-resultado no-print">
+        <p class="mp-num">Misión completada</p>
+        <div class="mp-nivel" id="mp-nivel-texto"></div>
+        <p class="mp-puntaje" id="mp-puntaje-texto"></p>
+        <p id="mp-nivel-detalle" style="max-width:520px;margin:0 auto"></p>
+        <div class="mp-nombre-row">
+          <input type="text" id="mp-nombre" maxlength="30" placeholder="Tu nombre para el diploma" autocomplete="off">
+          <button type="button" class="btn secondary" id="mp-hacer-diploma">Generar mi diploma →</button>
+        </div>
+        <button type="button" class="btn back mp-opcion" id="mp-reintentar" style="border:1.5px solid var(--border);background:transparent;max-width:260px;margin:0 auto">Repetir la misión</button>
+      </div>
+
+      <div id="mp-diploma-zona" hidden>
+        <div id="diploma"></div>
+        <p class="no-print" style="text-align:center">
+          <button type="button" class="btn" id="mp-imprimir">🖨️ Imprimir mi diploma</button>
+        </p>
+      </div>
+    </section>
+
+    <!-- El arte de pedir más tiempo -->
+    <section class="no-print" id="arte">
+      <h2>El arte de pedir más tiempo (y que te digan que sí)</h2>
+      <p>
+        Dato clave: tus papás no dicen que no por maldad. Dicen que no cuando no confían
+        en que vas a parar. O sea, la forma de conseguir más tiempo no es alegar más
+        fuerte: es <strong>ser alguien con quien se puede negociar</strong>. Las 5 reglas:
+      </p>
+      <ol class="mp-reglas">
+        <li><strong>Cumple primero.</strong> Nadie le da más minutos a quien peleó los de ayer.
+          Una semana cumpliendo sin drama vale más que cualquier discurso.</li>
+        <li><strong>Pide con argumento, no con berrinche.</strong> "Todos mis amigos pueden" no es
+          argumento. "Terminé mis tareas toda la semana y quiero jugar la final con mi equipo el
+          sábado" sí lo es.</li>
+        <li><strong>Propone un trueque justo.</strong> Más tiempo a cambio de algo que a ellos les
+          importe: tareas antes, la pieza ordenada, leer un rato. Los papás aman los trueques.</li>
+        <li><strong>Acepta el "no" de hoy sin drama.</strong> Suena raro, pero cada "no" bien
+          aceptado te acerca al próximo "sí": les demuestra que las reglas no te convierten en
+          monstruo.</li>
+        <li><strong>Ponlo por escrito.</strong> La jugada máster: proponles firmar un
+          <a href="acuerdo-de-pantallas.html">acuerdo de pantallas</a>. Quedan las reglas claras
+          para los dos lados (ellos también firman cosas) y se acaban las peleas de cada noche.
+          Que la idea venga de ti los va a dejar sin palabras.</li>
+      </ol>
+      <p><a class="btn secondary" href="acuerdo-de-pantallas.html" id="mp-cta-generador">Proponerles el acuerdo →</a></p>
+
+      <h2>Y con el tiempo que ya tienes: úsalo como pro</h2>
+      <p>
+        Los minutos valen distinto según en qué se van. Mirar scroll infinito es como
+        gastar la plata en nada; crear algo es inversión. Ideas que valen sus minutos:
+        hacer tu propio juego (Scratch, Roblox Studio), editar un video bueno en vez de
+        ver veinte malos, aprender un truco nuevo (dibujo, música, un idioma con una app),
+        o armar una partida con amigos de verdad en vez de jugar solo con desconocidos.
+        Un buen argumento para la regla 2, además: "quiero 30 minutos más para terminar
+        mi juego en Scratch" gana lejos contra "quiero ver más videos".
+      </p>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="inner">
+      <div class="brand-note">
+        <h4>🛡️ controlparental.cl</h4>
+        Guías honestas de seguridad digital para familias chilenas. Sin alarmismo,
+        sin tecnicismos: los pasos exactos y los porqués.
+      </div>
+      <div>
+        <h4>Guías populares</h4>
+        <a href="guias/control-parental-iphone.html">iPhone y iPad</a>
+        <a href="guias/control-parental-android.html">Android</a>
+        <a href="guias/control-parental-playstation.html">PlayStation</a>
+        <a href="guias/control-parental-roblox.html">Roblox</a>
+      </div>
+      <div>
+        <h4>Recursos</h4>
+        <a href="metodo.html">El método</a>
+        <a href="mejores-apps-control-parental.html">Mejores apps 2026</a>
+        <a href="kit.html">Kit familiar imprimible</a>
+        <a href="por-que-importa.html">Por qué importa</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
+        <a href="terminos.html">Términos y condiciones</a>
+        <a href="privacidad.html">Política de privacidad</a>
+      </div>
+      <div class="fineprint">
+        © 2026 ControlParental.cl. Algunos enlaces de este sitio son de afiliados: si compras
+        a través de ellos podemos recibir una comisión, sin costo extra para ti. Solo
+        recomendamos productos que investigamos y usaríamos con nuestras propias familias.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+
+    function gtag() { (window.dataLayer = window.dataLayer || []).push(arguments); }
+
+    /* Cada opción: texto + puntos (0/1/2) + feedback. El orden de la mejor respuesta
+       varía a propósito para que no sea siempre la última. */
+    var escenarios = [
+      {
+        titulo: "La partida que no se puede pausar",
+        situacion: "Estás en una partida clasificatoria que no se puede pausar y tu tiempo de pantalla se acaba en 10 minutos.",
+        opciones: [
+          { t: "Sigo jugando y me hago el que no vi la hora.", p: 0,
+            f: "Te van a pillar igual, hoy o mañana. Y cada vez que te pillan pierdes lo más caro que tienes: la confianza. Sin confianza, olvídate de negociar más minutos." },
+          { t: "Antes de entrar a una partida larga, aviso: \"esta dura 25 minutos, ¿la alcanzo a jugar?\"", p: 2,
+            f: "Jugada de pro. Avisar antes convierte un problema en un acuerdo, y te marca como alguien que cumple. Esa fama es la que después te consigue más tiempo." },
+          { t: "Alego que es injusto mientras sigo jugando.", p: 1,
+            f: "Alegar a mitad de la partida nunca resulta: ya es tarde. La negociación buena pasa antes de apretar \"jugar\", no después." }
+        ]
+      },
+      {
+        titulo: "El desconocido buena onda",
+        situacion: "Alguien que conociste jugando en línea te cae súper bien y te pide tu Instagram o tu número.",
+        opciones: [
+          { t: "Se lo doy, llevamos semanas jugando juntos y es buena onda.", p: 0,
+            f: "En internet nadie puede comprobar quién es quién. \"Semanas jugando\" no es conocer a alguien. Tus datos son tuyos, y quien es buena onda de verdad no los necesita." },
+          { t: "No se lo doy, y si insiste lo bloqueo y le cuento a un papá.", p: 2,
+            f: "Exacto. Que un desconocido insista por tus datos es LA señal de alerta. Y contar no es ser acusete: es tener refuerzos. Los que trabajan engañando niños le tienen terror a una sola cosa: que cuentes." },
+          { t: "Le digo que no, pero sigo jugando con él como si nada.", p: 1,
+            f: "Bien por no darlo. Ojo con una cosa: si vuelve a pedirlo o se enoja porque dijiste que no, eso es una señal. Ahí toca bloquear y contar." }
+        ]
+      },
+      {
+        titulo: "Operación: sábado épico",
+        situacion: "Este sábado hay evento en tu juego favorito y quieres más tiempo del normal. ¿Cómo lo consigues?",
+        opciones: [
+          { t: "El jueves propongo: \"si termino mis tareas y ordeno mi pieza, ¿me dan 45 minutos extra el sábado?\"", p: 2,
+            f: "La fórmula completa: anticipación + trueque justo. Pediste antes, ofreciste algo a cambio, y con número exacto. A esa propuesta es casi imposible decirle que no." },
+          { t: "Lo pido a gritos el sábado cuando me cortan la sesión.", p: 0,
+            f: "Pedir gritando cuando ya te cortaron es la forma más segura de conseguir CERO minutos, hoy y el próximo sábado también." },
+          { t: "Espero a que estén de buenas y lo pido con cara de pena.", p: 1,
+            f: "Puede funcionar... una vez. Pero la cara de pena no construye nada: la próxima vez partes de cero. Un trato justo funciona todas las veces." }
+        ]
+      },
+      {
+        titulo: "La foto que llega al grupo",
+        situacion: "Al grupo del curso llega una foto vergonzosa de un compañero. Todos la están comentando.",
+        opciones: [
+          { t: "La reenvío a mi mejor amigo, total ya la vieron todos.", p: 0,
+            f: "Reenviar te hace parte del daño, aunque no hayas partido tú. Y difundir fotos de otros puede traer problemas muy serios, incluso siendo menor. La cadena se corta contigo." },
+          { t: "No la reenvío, pero tampoco digo nada.", p: 1,
+            f: "No reenviar ya te pone del lado correcto. Pero piensa en el compañero: lo está pasando pésimo. Un adulto puede parar la cadena mucho más rápido que el silencio." },
+          { t: "No la reenvío y le aviso a un adulto de confianza que esto está pasando.", p: 2,
+            f: "Nivel máster. Cortaste la cadena Y activaste a alguien que puede pararla completa. Eso no es ser soplón: al que le llegue una foto suya mañana le gustaría que alguien hiciera lo mismo." }
+        ]
+      },
+      {
+        titulo: "Los 40 minutos fantasma",
+        situacion: "Se te pasó el tiempo de pantalla y tus papás no se dieron cuenta. Nadie lo sabe, solo tú.",
+        opciones: [
+          { t: "Aviso yo: \"oye, se me pasó el tiempo hoy, lo descuento del fin de semana\".", p: 2,
+            f: "Esto vale oro. Un aviso así, que nadie te pidió, compra más confianza que un mes de cumplir callado. Y cuando pidas tiempo extra, se van a acordar exactamente de esto." },
+          { t: "Silencio total: gané 40 minutos gratis.", p: 0,
+            f: "Gratis no son. Si se enteran después (y los papás siempre se enteran después), pagaste esos 40 minutos con la confianza que necesitas para negociar todo lo demás." },
+          { t: "No digo nada, pero mañana uso 40 minutos menos para quedar a mano.", p: 1,
+            f: "La intención es buena y habla bien de ti. Pero a escondidas no suma puntos con nadie. La misma jugada, dicha en voz alta, te convierte en leyenda." }
+        ]
+      },
+      {
+        titulo: "El challenge viral",
+        situacion: "Un video te desafía a hacer un challenge que se ve un poco peligroso, pero lo está haciendo todo el mundo y se ve divertido.",
+        opciones: [
+          { t: "Lo hago al tiro y lo subo antes de que pase de moda.", p: 0,
+            f: "Los challenges virales viven de que nadie piense antes de hacerlos. Los que terminan mal no salen en el video con música: salen en las noticias." },
+          { t: "Me pregunto: ¿quién gana con esto? ¿me puede doler a mí o a otro? Y si tengo dudas, lo converso antes.", p: 2,
+            f: "Esa pregunta (\"¿quién gana con esto?\") es un superpoder. La respuesta casi siempre es: la app y el que sube el video. Tú solo pones el riesgo." },
+          { t: "No lo hago, pero le doy like y lo comparto.", p: 1,
+            f: "No hacerlo ya es criterio. Pero ojo: tu like y tu compartida son votos para que el challenge le llegue a alguien que sí lo va a hacer." }
+        ]
+      },
+      {
+        titulo: "La tarde libre",
+        situacion: "Terminaste las tareas y tus responsabilidades más temprano que nunca. Sobra tarde.",
+        opciones: [
+          { t: "Pantalla sin parar hasta que alguien me saque del computador.", p: 0,
+            f: "Volarse el límite justo el día que hiciste todo bien es regalar el mejor argumento que has tenido en semanas. No lo quemes así." },
+          { t: "Uso mi tiempo normal y propongo guardar los minutos que sobran para el fin de semana.", p: 2,
+            f: "El famoso banco de minutos: los que no usas hoy valen más el sábado. Y proponerlo tú suena a alguien que maneja su tiempo, no que el tiempo lo maneja a él." },
+          { t: "Pido tiempo extra al tiro: \"terminé todo, ¿puedo seguir un rato?\"", p: 1,
+            f: "Buen argumento, bien pedido. Solo un nivel más arriba: propónlo como regla estable (\"cuando termine todo antes, ¿puedo tener 20 extra?\") y no tendrás que pedirlo cada vez." }
+        ]
+      },
+      {
+        titulo: "El hermano chico",
+        situacion: "Estás viendo una serie con partes de miedo y tu hermano de 6 años se sienta al lado a mirar.",
+        opciones: [
+          { t: "Cambio a otra cosa mientras esté él, y sigo la mía después.", p: 2,
+            f: "Eso es criterio del bueno: entender que lo que a ti no te hace nada, a él le puede dar pesadillas una semana. Cuidar al más chico sin hacer escándalo es de máster." },
+          { t: "Que vea no más, no es para tanto.", p: 0,
+            f: "Para ti no es para tanto: tienes más años de entrenamiento. Para él sí lo es, y el que sabe eso eres tú, no él. Con el poder de la pantalla viene la responsabilidad." },
+          { t: "Lo echo a gritos de la pieza.", p: 1,
+            f: "Objetivo logrado, método desastroso: terminará llorando donde tus papás y adivina quién pierde la tarde. Cambiar de video un rato sale mucho más barato." }
+        ]
+      }
+    ];
+
+    var niveles = [
+      { min: 0,  max: 8,  nombre: "🌱 Aprendiz de Pantallas",
+        detalle: "Ya tienes lo básico y ahora sabes exactamente qué mejorar. Repite la misión cuando quieras: los másters se hacen entrenando." },
+      { min: 9,  max: 13, nombre: "🎮 Jugador Pro",
+        detalle: "Manejas tus pantallas mejor que la mayoría. Te falta poco para el nivel máximo: casi siempre es la parte de avisar antes y proponer trueques." },
+      { min: 14, max: 16, nombre: "🏆 Máster de Pantallas",
+        detalle: "Nivel máximo. Sabes parar, sabes cuidarte y sabes negociar. Ahora usa ese poder: proponles a tus papás el acuerdo por escrito y consigue reglas justas para los dos lados." }
+    ];
+
+    var actual = 0;
+    var puntaje = 0;
+    var inicioTrackeado = false;
+
+    var progreso = document.getElementById("mp-progress");
+    escenarios.forEach(function () { progreso.appendChild(document.createElement("span")); });
+
+    function pintarProgreso() {
+      progreso.querySelectorAll("span").forEach(function (s, i) {
+        s.classList.toggle("on", i < actual);
+        s.classList.toggle("now", i === actual);
+      });
+    }
+
+    function esc(s) {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function mostrarEscenario() {
+      pintarProgreso();
+      var e = escenarios[actual];
+      var cont = document.getElementById("mp-escenario");
+      var html = '<p class="mp-num">Situación ' + (actual + 1) + " de " + escenarios.length + "</p>";
+      html += "<h2>" + e.titulo + "</h2>";
+      html += '<p class="mp-situacion">' + e.situacion + "</p>";
+      html += '<div class="mp-opciones">';
+      e.opciones.forEach(function (o, i) {
+        html += '<button type="button" class="mp-opcion" data-i="' + i + '">' + o.t + "</button>";
+      });
+      html += "</div>";
+      html += '<div class="mp-feedback" id="mp-feedback"></div>';
+      html += '<button type="button" class="btn mp-siguiente" id="mp-siguiente">' +
+        (actual < escenarios.length - 1 ? "Siguiente situación →" : "Ver mi resultado →") + "</button>";
+      cont.innerHTML = html;
+
+      cont.querySelectorAll(".mp-opcion").forEach(function (btn) {
+        btn.addEventListener("click", function () { responder(parseInt(btn.getAttribute("data-i"), 10)); });
+      });
+      cont.querySelector("#mp-siguiente").addEventListener("click", avanzar);
+    }
+
+    function responder(i) {
+      if (!inicioTrackeado) { inicioTrackeado = true; gtag("event", "mision_inicio"); }
+      var e = escenarios[actual];
+      var o = e.opciones[i];
+      puntaje += o.p;
+      document.querySelectorAll(".mp-opcion").forEach(function (b, j) {
+        b.disabled = true;
+        if (j === i) { b.classList.add("elegida-" + o.p); }
+      });
+      var fb = document.getElementById("mp-feedback");
+      var etiqueta = o.p === 2 ? "⭐ ¡Máster! " : (o.p === 1 ? "👍 Casi. " : "💥 Ups. ");
+      fb.innerHTML = "<strong>" + etiqueta + "</strong>" + o.f;
+      fb.className = "mp-feedback v" + o.p;
+      document.getElementById("mp-siguiente").classList.add("on");
+    }
+
+    function avanzar() {
+      actual++;
+      if (actual < escenarios.length) {
+        mostrarEscenario();
+        document.getElementById("mision").scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        terminar();
+      }
+    }
+
+    function nivelDe(p) {
+      for (var i = 0; i < niveles.length; i++) {
+        if (p >= niveles[i].min && p <= niveles[i].max) return niveles[i];
+      }
+      return niveles[0];
+    }
+
+    function terminar() {
+      var n = nivelDe(puntaje);
+      document.getElementById("mision").hidden = true;
+      document.getElementById("mp-nivel-texto").textContent = n.nombre;
+      document.getElementById("mp-puntaje-texto").textContent = puntaje + " de 16 puntos";
+      document.getElementById("mp-nivel-detalle").textContent = n.detalle;
+      document.getElementById("mp-final").hidden = false;
+      document.getElementById("mp-final").scrollIntoView({ behavior: "smooth", block: "start" });
+      gtag("event", "mision_completada", { nivel: n.nombre, puntaje: puntaje });
+    }
+
+    document.getElementById("mp-hacer-diploma").addEventListener("click", function () {
+      var nombre = document.getElementById("mp-nombre").value.trim();
+      var n = nivelDe(puntaje);
+      var hoy = new Date();
+      var fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
+      var d = document.getElementById("diploma");
+      d.innerHTML =
+        '<p class="d-titulo">Misión Pantallas</p>' +
+        '<p class="d-sub">Certificado oficial de criterio digital</p>' +
+        "<p>Se certifica que</p>" +
+        '<div class="d-nombre">' + (nombre ? esc(nombre) : "&nbsp;") + "</div>" +
+        '<p class="d-nivel">alcanzó el nivel ' + n.nombre + "</p>" +
+        '<p class="d-detalle">Completó las 8 situaciones de la misión (' + puntaje + " de 16 puntos): " +
+        "sabe parar a tiempo, cuidar sus datos, cortar cadenas de fotos y negociar su tiempo " +
+        "de pantalla con argumentos, como corresponde a alguien de su nivel.</p>" +
+        '<p class="d-fecha">Fecha: ' + fecha + "</p>" +
+        '<div class="d-footer">Misión Pantallas · controlparental.cl/mision-pantallas.html · Diploma de libre impresión (pégalo donde tus papás lo vean).</div>';
+      document.getElementById("mp-diploma-zona").hidden = false;
+      d.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+
+    document.getElementById("mp-imprimir").addEventListener("click", function () {
+      gtag("event", "diploma_impreso", { puntaje: puntaje });
+      window.print();
+    });
+
+    document.getElementById("mp-reintentar").addEventListener("click", function () {
+      actual = 0; puntaje = 0;
+      document.getElementById("mp-final").hidden = true;
+      document.getElementById("mp-diploma-zona").hidden = true;
+      document.getElementById("mision").hidden = false;
+      mostrarEscenario();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.getElementById("mp-cta-generador").addEventListener("click", function () {
+      gtag("event", "click_generador_desde_mision", { puntaje: puntaje });
+    });
+
+    mostrarEscenario();
+  })();
+  </script>
+</body>
+</html>
