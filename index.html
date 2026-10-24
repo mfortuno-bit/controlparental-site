@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ControlParental.cl — Guías de control parental para cada dispositivo</title>
-  <meta name="description" content="Guías paso a paso en español para configurar el control parental en celulares, consolas y apps. Hechas para padres y apoderados en Chile, actualizadas 2026.">
+  <title>Control parental en chileno — guías para el celular, la consola y el WiFi</title>
+  <meta name="description" content="Guías cortas, en chileno, para dejar listo el celular, la consola, las apps y el WiFi de la casa. Las escribe Matías, desde la documentación oficial. Gratis.">
   <link rel="canonical" href="https://controlparental.cl/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CL">
-  <meta property="og:title" content="ControlParental.cl — Guías de control parental para cada dispositivo">
-  <meta property="og:description" content="Instrucciones claras para proteger a tus hijos en celulares, consolas y apps. Sin tecnicismos ni alarmismo.">
+  <meta property="og:title" content="Control parental en chileno — guías para el celular, la consola y el WiFi">
+  <meta property="og:description" content="Instrucciones cortas, con los nombres de botones que de verdad vas a ver. Hecho en Chile.">
   <meta property="og:url" content="https://controlparental.cl/">
   <meta property="og:image" content="https://controlparental.cl/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
 {
@@ -26,7 +26,7 @@
       "@type": "WebSite",
       "name": "ControlParental.cl",
       "url": "https://controlparental.cl/",
-      "description": "Guías paso a paso en español para configurar el control parental en celulares, consolas y apps. Hechas para padres y apoderados en Chile.",
+      "description": "Guías en chileno para configurar el control parental del celular, la consola, las apps y el WiFi.",
       "inLanguage": "es-CL",
       "publisher": { "@id": "https://controlparental.cl/#org" }
     },
@@ -35,7 +35,8 @@
       "@id": "https://controlparental.cl/#org",
       "name": "ControlParental.cl",
       "url": "https://controlparental.cl/",
-      "logo": { "@type": "ImageObject", "url": "https://controlparental.cl/og.png" }
+      "logo": { "@type": "ImageObject", "url": "https://controlparental.cl/og.png" },
+      "founder": { "@type": "Person", "name": "Matías", "url": "https://controlparental.cl/quienes-somos.html" }
     }
   ]
 }
@@ -43,308 +44,218 @@
   <script defer src="analytics.js"></script>
 </head>
 <body>
-  <header class="site">
-    <div class="inner">
-      <a class="logo" href="index.html"><span class="logo-mark"><svg viewBox="0 0 64 64" width="20" height="20" aria-hidden="true"><path d="M32 8 L52 15 V29 C52 42.5 43.5 51.8 32 55 C20.5 51.8 12 42.5 12 29 V15 Z" fill="#f6f4ef"/><path d="M32 41 C27.8 37.2 22 33.8 22 28.2 C22 24.3 25.1 21.8 28.1 21.8 C29.8 21.8 31.2 22.6 32 24 C32.8 22.6 34.2 21.8 35.9 21.8 C38.9 21.8 42 24.3 42 28.2 C42 33.8 36.2 37.2 32 41 Z" fill="#c4633f"/></svg></span>controlparental<span class="tld">.cl</span></a>
-      <nav>
-        <a href="#guias">Guías</a>
-        <a href="metodo.html">El método</a>
-        <a href="mejores-apps-control-parental.html">Mejores apps</a>
-        <a class="nav-cta" href="kit.html">Kit familiar</a>
-      </nav>
-    </div>
-  </header>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site">
+  <div class="inner">
+    <a class="logo" href="index.html">controlparental<span class="tld">.cl</span></a>
+    <nav aria-label="Principal">
+      <a href="index.html#guias" aria-current="page">Guías</a>
+      <a href="control-parental-por-edades.html">Por edad</a>
+      <a href="mejores-apps-control-parental.html">Apps</a>
+      <a href="guias/mi-hijo-burlo-el-control-parental.html">Si se lo saltó</a>
+      <a href="quienes-somos.html">Quién escribe</a>
+    </nav>
+  </div>
+</header>
 
-  <div class="hero">
-    <div class="inner">
-      <span class="badge">✓ Actualizado 2026 · 100% en español · Hecho en Chile</span>
-      <h1>Protege a tus hijos en internet <em>sin ser ingeniero</em></h1>
-      <p class="lead">
-        Guías paso a paso para configurar el control parental de cada celular, consola y
-        app que usan tus hijos. Claras, honestas y en menos de 10 minutos por dispositivo.
-      </p>
-      <div class="hero-actions">
-        <a class="btn secondary" href="#guias">Ver las guías gratis →</a>
-        <a class="btn ghost" href="mejores-apps-control-parental.html">Comparar apps</a>
+<section class="hero" id="contenido">
+  <div class="wrap grid">
+    <div>
+      <p class="kicker"><b>Hecho en Chile</b> · guías gratis para celulares, consolas, apps y el WiFi de la casa</p>
+      <h1>Deja listo el celular de tu hijo <em>sin pelear con los menús.</em></h1>
+      <p class="lead">Instrucciones cortas, en chileno y con los nombres de botones que de verdad vas a ver. Para el primer celular, la consola nueva o ese día en que descubres que se saltó el control.</p>
+      <div class="actions">
+        <a class="btn" href="#empieza">¿Por dónde parto?</a>
+        <a class="link-arrow" href="#guias">Ver todas las guías</a>
       </div>
-      <div class="hero-stats">
-        <div><strong>24</strong> guías paso a paso</div>
-        <div><strong>10 min</strong> por dispositivo</div>
-        <div><strong>$0</strong> cuestan las guías</div>
+    </div>
+    <aside>
+      <div class="note">
+        <h3>Antes de pasarle el celular</h3>
+        <ol>
+          <li>Crea su cuenta con la edad real.</li>
+          <li>Instala el control en <u>tu</u> teléfono, no en el suyo.</li>
+          <li>Pon hora de dormir antes que límite diario.</li>
+          <li>Pide aprobar las descargas.</li>
+          <li>Conversen las reglas y anótenlas.</li>
+        </ol>
+        <p class="sign">— lo que haría yo, en ese orden. Matías</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="block" id="empieza">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Empieza por lo que te está pasando</h2>
+      <p>No hace falta leer todo. Elige tu caso y sigue el orden.</p>
+    </div>
+    <div class="situ">
+      <article>
+        <p class="n">1</p>
+        <h3>Le voy a pasar su primer celular</h3>
+        <p>Qué edad, qué configurar el día uno y qué conversar antes de entregárselo. <a href="primer-celular-edad.html">La guía del primer celular</a>.</p>
+      </article>
+      <article>
+        <p class="n">2</p>
+        <h3>Juega Roblox o Fortnite y no suelta la consola</h3>
+        <p>Chat, compras y tiempo de juego, juego por juego. <a href="guias/control-parental-roblox.html">Roblox</a> · <a href="guias/control-parental-fortnite.html">Fortnite</a>.</p>
+      </article>
+      <article>
+        <p class="n">3</p>
+        <h3>Quiero ordenar el WiFi de toda la casa</h3>
+        <p>Filtros y horarios desde el router, para todos los equipos a la vez. <a href="guias/control-parental-router.html">El router</a> · <a href="guias/pausar-wifi-hijos.html">Pausar un equipo</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="guias">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Todas las guías</h2>
+      <p>24 guías. Cada una dice cuándo la revisé por última vez.</p>
+    </div>
+    <div class="index">
+      <div>
+        <h3>Celulares y tablets</h3>
+        <ul>
+          <li><a href="guias/control-parental-android.html">Android (Family Link) <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-iphone.html">iPhone y iPad <span>oct 2026</span></a></li>
+          <li><a href="guias/acceso-guiado-ipad.html">Acceso guiado en iPad <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-amazon-fire-kids.html">Amazon Fire Kids <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-chromebook.html">Chromebook <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-windows.html">Computador Windows <span>oct 2026</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Consolas y juegos</h3>
+        <ul>
+          <li><a href="guias/control-parental-nintendo-switch.html">Nintendo Switch <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-playstation.html">PlayStation <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-xbox.html">Xbox <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-roblox.html">Roblox <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-fortnite.html">Fortnite <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-minecraft.html">Minecraft <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-steam.html">Steam <span>oct 2026</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Apps y redes</h3>
+        <ul>
+          <li><a href="guias/control-parental-youtube.html">YouTube <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-tiktok.html">TikTok <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-instagram.html">Instagram <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-whatsapp.html">WhatsApp <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-snapchat.html">Snapchat <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-discord.html">Discord <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-netflix-disney.html">Netflix y Disney+ <span>oct 2026</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>La casa entera</h3>
+        <ul>
+          <li><a href="guias/control-parental-router.html">Router y WiFi <span>oct 2026</span></a></li>
+          <li><a href="guias/pausar-wifi-hijos.html">Pausar el WiFi de un equipo <span>oct 2026</span></a></li>
+          <li><a href="guias/control-parental-smart-tv.html">Smart TV <span>oct 2026</span></a></li>
+          <li><a href="guias/mi-hijo-burlo-el-control-parental.html">Se saltó el control: qué hacer <span>oct 2026</span></a></li>
+        </ul>
       </div>
     </div>
   </div>
+</section>
 
-  <main class="wide">
-    <section id="guias">
-      <p class="eyebrow">Guías por dispositivo</p>
-      <h2>Elige el equipo que quieres dejar bajo control</h2>
-      <p class="subtitle">Cada guía incluye los pasos exactos, los ajustes que nadie revisa y los trucos que usan los niños para saltárselos.</p>
-
-      <ul class="card-grid">
-        <li class="card">
-          <span class="icon">📱</span><span class="go">→</span>
-          <a href="guias/control-parental-iphone.html">iPhone y iPad</a>
-          <p>Tiempo en Pantalla: límites, filtros de contenido y los ajustes que no se pueden deshacer.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🤖</span><span class="go">→</span>
-          <a href="guias/control-parental-android.html">Android</a>
-          <p>Google Family Link: cuenta infantil, límites de tiempo, aprobación de apps y ubicación.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🎮</span><span class="go">→</span>
-          <a href="guias/control-parental-playstation.html">PlayStation 5 y 4</a>
-          <p>Tiempo de juego, control de gastos, chat de voz y clasificación por edades.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🕹️</span><span class="go">→</span>
-          <a href="guias/control-parental-nintendo-switch.html">Nintendo Switch</a>
-          <p>La app oficial de Nintendo: tiempo de juego, compras en la eShop y comunicación.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🟩</span><span class="go">→</span>
-          <a href="guias/control-parental-xbox.html">Xbox Series X|S y One</a>
-          <p>App Family Settings: tiempo de juego, compras con tu aprobación, chat y multijugador.</p>
-        </li>
-        <li class="card">
-          <span class="icon">💻</span><span class="go">→</span>
-          <a href="guias/control-parental-windows.html">Computador Windows</a>
-          <p>Microsoft Family Safety: tiempo de pantalla, bloqueo de apps y filtro web.</p>
-        </li>
-        <li class="card">
-          <span class="icon">▶️</span><span class="go">→</span>
-          <a href="guias/control-parental-youtube.html">YouTube</a>
-          <p>YouTube Kids vs. cuentas supervisadas: cuál corresponde a cada edad.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🧱</span><span class="go">→</span>
-          <a href="guias/control-parental-roblox.html">Roblox</a>
-          <p>Chat con desconocidos, contenido por edad, Robux y el clásico de la cuenta alternativa.</p>
-        </li>
-        <li class="card">
-          <span class="icon">📶</span><span class="go">→</span>
-          <a href="guias/control-parental-router.html">Router (toda la casa)</a>
-          <p>TP-Link HomeShield y filtro DNS gratis: un ajuste que cubre todos los dispositivos del WiFi.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🚦</span><span class="go">→</span>
-          <a href="guias/pausar-wifi-hijos.html">Pausar el WiFi por tareas</a>
-          <p>El botón que corta y habilita el internet de cada hijo, y cómo usarlo de premio sin que salga el tiro por la culata.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🎵</span><span class="go">→</span>
-          <a href="guias/control-parental-tiktok.html">TikTok</a>
-          <p>Sincronización Familiar: límite diario, horas sin TikTok, modo restringido y mensajes.</p>
-        </li>
-        <li class="card">
-          <span class="icon">💬</span><span class="go">→</span>
-          <a href="guias/control-parental-whatsapp.html">WhatsApp</a>
-          <p>Los 8 ajustes de privacidad antes del primer grupo, y lo que ningún ajuste resuelve.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🍿</span><span class="go">→</span>
-          <a href="guias/control-parental-netflix-disney.html">Netflix y Disney+</a>
-          <p>Perfiles infantiles, clasificación por edad y PIN en los perfiles adultos, las dos plataformas.</p>
-        </li>
-        <li class="card">
-          <span class="icon">📸</span><span class="go">→</span>
-          <a href="guias/control-parental-instagram.html">Instagram</a>
-          <p>Cuentas de adolescentes y supervisión: límites, modo sueño y contenido sensible.</p>
-        </li>
-        <li class="card">
-          <span class="icon">👻</span><span class="go">→</span>
-          <a href="guias/control-parental-snapchat.html">Snapchat</a>
-          <p>Family Center, Snap Map en modo fantasma y la verdad sobre los mensajes que "desaparecen".</p>
-        </li>
-        <li class="card">
-          <span class="icon">🎧</span><span class="go">→</span>
-          <a href="guias/control-parental-discord.html">Discord</a>
-          <p>Centro Familiar, filtros de mensajes directos y las reglas del chat de voz.</p>
-        </li>
-        <li class="card">
-          <span class="icon">📺</span><span class="go">→</span>
-          <a href="guias/control-parental-smart-tv.html">Smart TV</a>
-          <p>Samsung, LG y Google TV: perfiles, bloqueos por clasificación y el PIN 0000 de fábrica.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🎒</span><span class="go">→</span>
-          <a href="guias/control-parental-chromebook.html">Chromebook</a>
-          <p>Family Link en el propio y qué hacer con el del colegio: invitado, cuentas extra y powerwash.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🖥️</span><span class="go">→</span>
-          <a href="guias/control-parental-steam.html">Steam</a>
-          <p>Familias de Steam: juegos aprobados uno a uno, límites de tiempo y compras con tu visto bueno.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🪂</span><span class="go">→</span>
-          <a href="guias/control-parental-fortnite.html">Fortnite</a>
-          <p>PIN de Epic, chat de voz y texto, V-Bucks con aprobación y el reporte semanal de horas.</p>
-        </li>
-        <li class="card">
-          <span class="icon">⛏️</span><span class="go">→</span>
-          <a href="guias/control-parental-minecraft.html">Minecraft</a>
-          <p>Bedrock vs Java: multijugador seguro, Marketplace y por qué un Realm propio gana.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🧸</span><span class="go">→</span>
-          <a href="guias/acceso-guiado-ipad.html">iPad para niños chicos</a>
-          <p>Acceso Guiado: dejar el iPad encerrado en una sola app cuando se lo prestas.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🔥</span><span class="go">→</span>
-          <a href="guias/control-parental-amazon-fire-kids.html">Tablet Amazon Fire Kids</a>
-          <p>Amazon Kids: perfil cerrado, metas educativas y límites por tipo de contenido.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🚨</span><span class="go">→</span>
-          <a href="guias/mi-hijo-burlo-el-control-parental.html">¿Burló el control?</a>
-          <p>Cómo descubrir por dónde, cerrar el hoyo y manejar la conversación sin declarar la guerra.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section id="metodo">
-      <p class="eyebrow">Antes de configurar nada</p>
-      <h2>Controlar es el paso 4, no el primero</h2>
-      <p>
-        Si solo instalas el control y te saltas el resto, terminas con un hijo vigilado que
-        no aprendió a manejarse. El día que tenga una pantalla sin filtro al frente, va a
-        estar igual de perdido. Por eso ordenamos esto en cinco pasos: primero tu ejemplo,
-        después acompañar, después acordar las reglas en familia, y recién ahí el control
-        técnico. La meta no es vigilar para siempre, es soltar de a poco.
-      </p>
-      <p><a class="btn" href="metodo.html">Cómo acompañar las pantallas (el método) →</a></p>
-    </section>
-
-    <section id="apps">
-      <p class="eyebrow">¿Por dónde partir?</p>
-      <h2>Los controles gratis resuelven harto, pero no todo</h2>
-      <p>
-        Las herramientas incluidas en cada equipo no siguen a tu hijo entre dispositivos ni
-        supervisan lo que pasa dentro de los chats y redes sociales. Para algunas familias
-        eso basta; para otras no. Hicimos la comparación honesta, incluyendo a quiénes les
-        conviene <strong>no pagar nada</strong>:
-      </p>
-      <p><a class="btn" href="mejores-apps-control-parental.html">Las mejores apps de control parental 2026 →</a></p>
-      <p class="meta">¿Pensando en Qustodio, la más popular? <a href="reviews/qustodio.html">Lee nuestra opinión honesta →</a></p>
-    </section>
-
-    <section id="por-que">
-      <p class="eyebrow">La evidencia</p>
-      <h2>¿Por qué importa todo esto?</h2>
-      <p>
-        Porque la investigación seria, no el pánico de los matinales, muestra efectos
-        reales de las pantallas donde un papá sí puede intervenir: el sueño (el consenso
-        más sólido de todos), la primera infancia, la salud mental adolescente y los
-        contactos con desconocidos. Juntamos los estudios de peso (OMS, Academia Americana
-        de Pediatría, <em>JAMA Pediatrics</em>, el debate Haidt vs. Odgers) y lo que
-        significan para tu casa, incluido lo que la evidencia <strong>no</strong> dice.
-      </p>
-      <p><a class="btn" href="por-que-importa.html">Lo que dice la ciencia de las pantallas →</a></p>
-    </section>
-
-    <section id="herramienta">
-      <p class="eyebrow">Herramientas gratuitas</p>
-      <h2>Genera el acuerdo de pantallas de tu familia en 2 minutos</h2>
-      <p class="subtitle">
-        Eliges la edad de tu hijo y los temas que generan conflicto en tu casa (juegos,
-        YouTube, redes, la hora de dormir), y te entregamos un acuerdo personalizado
-        listo para imprimir, conversar y firmar en familia. Sin registro, sin costo.
-      </p>
-      <p><a class="btn secondary" href="acuerdo-de-pantallas.html">Crear nuestro acuerdo →</a></p>
-      <p class="subtitle" style="margin-top:22px">
-        Y esta es <strong>para tu hijo</strong> (9 a 13): <a href="mision-pantallas.html">Misión
-        Pantallas</a>, 8 situaciones reales donde practica decisiones con criterio, gana un
-        diploma imprimible y aprende a negociar su tiempo con argumentos en vez de peleas.
-      </p>
-    </section>
-
-    <section id="articulos">
-      <p class="eyebrow">Para decidir, no solo configurar</p>
-      <h2>Las preguntas que llegan antes (y después) del control</h2>
-      <p class="subtitle">No todo se resuelve en Ajustes. Estas son las decisiones que más nos preguntan los papás chilenos.</p>
-      <ul class="card-grid">
-        <li class="card">
-          <span class="icon">📱</span><span class="go">→</span>
-          <a href="primer-celular-edad.html">¿A qué edad el primer celular?</a>
-          <p>En Chile llega en promedio a los 8,9 años. Qué dicen los expertos y cómo entregarlo sin que sea una pelea.</p>
-        </li>
-        <li class="card">
-          <span class="icon">⌚</span><span class="go">→</span>
-          <a href="mejores-relojes-gps-ninos-chile.html">Mejores relojes GPS para niños</a>
-          <p>La opción antes del celular: te ubica y te llama, sin internet. SoyMomo, SaveFamily y más, comparados para Chile.</p>
-        </li>
-        <li class="card">
-          <span class="icon">💸</span><span class="go">→</span>
-          <a href="control-parental-gratis-o-pago.html">¿Hay que pagar una app?</a>
-          <p>La mayoría resuelve gratis con lo que ya trae el equipo. Te ayudamos a saber si eres de las que sí necesita pagar.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🎂</span><span class="go">→</span>
-          <a href="control-parental-por-edades.html">Control parental por edades</a>
-          <p>Qué permitir y configurar a los 5, 8, 11 y 14 años. Lo que sirve a una edad es absurdo en otra.</p>
-        </li>
-        <li class="card">
-          <span class="icon">📲</span><span class="go">→</span>
-          <a href="mejores-tablets-para-ninos-chile.html">Mejores tablets para niños</a>
-          <p>Samsung, Lenovo, Fire Kids o una genérica barata: cuál conviene en Chile y qué configurar antes de entregarla.</p>
-        </li>
-        <li class="card">
-          <span class="icon">🎧</span><span class="go">→</span>
-          <a href="mejores-audifonos-para-ninos-chile.html">Audífonos para niños</a>
-          <p>El límite de 85 dB es el control parental que nadie configura. Los que cumplen de verdad, disponibles en Chile.</p>
-        </li>
-        <li class="card">
-          <span class="icon">📡</span><span class="go">→</span>
-          <a href="mejor-router-control-parental-chile.html">Router con control parental</a>
-          <p>El filtro de toda la casa de una sola vez: TP-Link con HomeShield, mesh para casas grandes o DNS gratis.</p>
-        </li>
-      </ul>
-    </section>
-
-    <div class="kit-promo">
-      <h3>📋 Kit de Seguridad Digital Familiar</h3>
-      <p>
-        Configurar el equipo es la mitad de la pega. La otra mitad es la conversación.
-        Contratos de tiempo de pantalla, acuerdo del primer celular y checklists
-        imprimibles que se llenan en familia, para que las reglas también sean de ellos.
-      </p>
-      <!-- TODO: reemplazar href con URL de Hotmart cuando esté publicado -->
-      <a class="btn secondary" href="kit.html">Conoce el kit →</a>
+<section class="block">
+  <div class="wrap">
+    <div class="two">
+      <article>
+        <p class="tag">Antes de configurar</p>
+        <h2>El control parental ayuda, pero no reemplaza la conversación</h2>
+        <p>Los niños aprenden a saltarse casi cualquier bloqueo. Lo que sí dura es tener reglas claras y lo que se conversa. Cada guía parte con lo técnico y termina con qué conversar.</p>
+        <p><a class="link-arrow" href="metodo.html">El método, en orden</a></p>
+      </article>
+      <article>
+        <p class="tag">Qué edad, qué reglas</p>
+        <h2>Lo que conviene a los 6, a los 10 y a los 14</h2>
+        <p>No es lo mismo un niño de primero básico que un adolescente con WhatsApp. Una tabla simple por edad, con lo que se configura y lo que se conversa.</p>
+        <p><a class="link-arrow" href="control-parental-por-edades.html">Ver la guía por edades</a></p>
+      </article>
     </div>
-  </main>
+  </div>
+</section>
 
-  <footer class="site">
-    <div class="inner">
-      <div class="brand-note">
-        <h4>🛡️ controlparental.cl</h4>
-        Guías honestas de seguridad digital para familias chilenas. Sin alarmismo,
-        sin tecnicismos: los pasos exactos y los porqués.
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Para decidir</h2>
+      <p>Edades, compras y las páginas que no son una guía de menús.</p>
+    </div>
+    <div class="index three">
+      <div>
+        <h3>La conversación</h3>
+        <ul>
+          <li><a href="primer-celular-edad.html">El primer celular <span>oct 2026</span></a></li>
+          <li><a href="control-parental-por-edades.html">Por edades <span>oct 2026</span></a></li>
+          <li><a href="acuerdo-de-pantallas.html">Acuerdo de pantallas <span>gratis</span></a></li>
+          <li><a href="metodo.html">El método <span>oct 2026</span></a></li>
+          <li><a href="por-que-importa.html">Por qué importa <span>oct 2026</span></a></li>
+          <li><a href="mision-pantallas.html">Misión Pantallas <span>9 a 13</span></a></li>
+        </ul>
       </div>
       <div>
-        <h4>Guías populares</h4>
-        <a href="guias/control-parental-iphone.html">iPhone y iPad</a>
-        <a href="guias/control-parental-android.html">Android</a>
-        <a href="guias/control-parental-playstation.html">PlayStation</a>
-        <a href="guias/control-parental-roblox.html">Roblox</a>
+        <h3>Si vas a comprar</h3>
+        <ul>
+          <li><a href="mejores-apps-control-parental.html">Apps de control parental <span>oct 2026</span></a></li>
+          <li><a href="control-parental-gratis-o-pago.html">¿Hace falta pagar? <span>oct 2026</span></a></li>
+          <li><a href="reviews/qustodio.html">Opinión: Qustodio <span>oct 2026</span></a></li>
+          <li><a href="mejores-tablets-para-ninos-chile.html">Tablets <span>oct 2026</span></a></li>
+          <li><a href="mejores-audifonos-para-ninos-chile.html">Audífonos <span>oct 2026</span></a></li>
+          <li><a href="mejores-relojes-gps-ninos-chile.html">Relojes GPS <span>oct 2026</span></a></li>
+          <li><a href="mejor-router-control-parental-chile.html">Router para la casa <span>oct 2026</span></a></li>
+        </ul>
       </div>
       <div>
-        <h4>Recursos</h4>
-        <a href="metodo.html">El método</a>
-        <a href="mejores-apps-control-parental.html">Mejores apps 2026</a>
-        <a href="kit.html">Kit familiar imprimible</a>
-        <a href="quienes-somos.html">Quiénes somos</a>
-        <a href="terminos.html">Términos y condiciones</a>
-        <a href="privacidad.html">Política de privacidad</a>
-      </div>
-      <div class="fineprint">
-        © 2026 ControlParental.cl. Algunos enlaces de este sitio son de afiliados: si compras
-        a través de ellos podemos recibir una comisión, sin costo extra para ti. Solo
-        recomendamos productos que investigamos y usaríamos con nuestras propias familias.
+        <h3>El sitio</h3>
+        <ul>
+          <li><a href="quienes-somos.html">Quién escribe <span>Matías</span></a></li>
+          <li><a href="reviews/">Opiniones <span>Qustodio</span></a></li>
+          <li><a href="kit.html">Sobre el kit imprimible <span>no está a la venta</span></a></li>
+        </ul>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="honest">
+      <p>Cada guía la armo con la documentación de Google, Apple, Microsoft y de cada app, y la reviso cuando cambian las funciones. Si algo ya no aparece donde digo, escríbeme y lo corrijo.</p>
+      <p>Las recomendaciones de apps y equipos no se pagan.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="inner">
+    <div>
+      <h4>controlparental.cl</h4>
+      <p>Guías gratis para configurar el control parental de los equipos que hay en una casa chilena. Lo escribe una persona, no una empresa de software.</p>
+    </div>
+    <div>
+      <h4>El sitio</h4>
+      <a href="quienes-somos.html">Quién escribe</a>
+      <a href="metodo.html">Cómo revisamos</a>
+      <a href="acuerdo-de-pantallas.html">Acuerdo de pantallas</a>
+      <a href="reviews/">Opiniones</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+    </div>
+    <p class="fine">Hecho en Chile. Las guías salen de la documentación oficial y se revisan cuando cambian los menús. Si un botón ya no está donde dice la guía, escribe a <a href="mailto:contacto@controlparental.cl">contacto@controlparental.cl</a>.</p>
+  </div>
+</footer>
 </body>
 </html>
